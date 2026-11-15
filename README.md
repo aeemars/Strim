@@ -28,4 +28,4 @@ Remove the local database volume as well:
 docker compose down -v
 ```
 
-Phase 1 provides the infrastructure foundation. Application services are added in the following phases.
+
