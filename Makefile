@@ -1,4 +1,4 @@
-.PHONY: up down logs topics health producer
+.PHONY: up down logs topics health producer detector
 
 up:
 	docker compose up -d
@@ -20,3 +20,6 @@ health:
 
 producer:
 	go run ./cmd/producer
+
+detector:
+	go run ./cmd/detector

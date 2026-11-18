@@ -46,4 +46,14 @@ go run ./cmd/producer --scenario=high-value
 go run ./cmd/producer --scenario=impossible-travel
 ```
 
+## Run the detector
+
+With Kafka and Redis running:
+
+```bash
+make detector
+```
+
+The detector reads `transactions.raw`, evaluates NGN/kobo rules, and publishes decisions to `transactions.flagged` or `transactions.cleared`.
+
 
