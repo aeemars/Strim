@@ -1,4 +1,4 @@
-.PHONY: up down logs topics health
+.PHONY: up down logs topics health producer
 
 up:
 	docker compose up -d
@@ -17,3 +17,6 @@ health:
 	docker compose exec kafka kafka-topics --bootstrap-server kafka:29092 --list
 	docker compose exec redis redis-cli ping
 	docker compose exec postgres pg_isready -U "$${POSTGRES_USER:-strim}" -d "$${POSTGRES_DB:-strim}"
+
+producer:
+	go run ./cmd/producer

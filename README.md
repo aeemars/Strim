@@ -28,4 +28,22 @@ Remove the local database volume as well:
 docker compose down -v
 ```
 
+## Generate transactions
+
+Start Kafka and Redis, then run the producer:
+
+```bash
+docker compose up -d kafka redis kafka-init
+make producer
+```
+
+Useful producer options:
+
+```bash
+go run ./cmd/producer --rate=10 --burst=12 --poison=0.001
+go run ./cmd/producer --scenario=velocity --burst=12
+go run ./cmd/producer --scenario=high-value
+go run ./cmd/producer --scenario=impossible-travel
+```
+
 
