@@ -15,9 +15,15 @@ import (
 	"github.com/aeemars/Strim/internal/config"
 	strimkafka "github.com/aeemars/Strim/internal/kafka"
 	"github.com/aeemars/Strim/internal/ledger"
+	"github.com/aeemars/Strim/internal/telemetry"
 )
 
 func main() {
+	handler := &telemetry.RedactingHandler{
+		Handler: slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelInfo}),
+	}
+	slog.SetDefault(slog.New(handler))
+
 	cfg, err := config.Load()
 	if err != nil {
 		slog.Error("load config", "error", err)

@@ -1,4 +1,4 @@
-.PHONY: up down logs topics health producer detector ledger
+.PHONY: up down logs topics health producer detector ledger test test-e2e
 
 up:
 	docker compose up -d
@@ -26,3 +26,9 @@ detector:
 
 ledger:
 	go run ./cmd/ledger
+
+test:
+	go test -v ./...
+
+test-e2e:
+	STRIM_E2E=1 go test -v -timeout 5m ./test/e2e/...

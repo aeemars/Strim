@@ -66,4 +66,22 @@ make ledger
 
 The ledger service consumes cleared transactions from `transactions.cleared`, enforces strict idempotency via `processed_transactions`, acquires deterministic row-level locks on accounts to prevent deadlocks, mutates balances atomically, and writes double-entry records (`DEBIT` and `CREDIT`) to `ledger_entries`.
 
+## Testing
+
+Run unit tests across all packages:
+
+```bash
+make test
+```
+
+Run the end-to-end load, value conservation, and chaos test harness (requires running Docker services):
+
+```bash
+make test-e2e
+```
+
+## Operations & Production Guide
+
+See [OPERATIONAL_RUNBOOK.md](docs/OPERATIONAL_RUNBOOK.md) for Kafka topic retention policies, Dead-Letter Queue (DLQ) replay playbooks, security guidelines, and incident recovery procedures.
+
 
