@@ -16,7 +16,7 @@ func Load() (Config, error) {
 	config := Config{
 		KafkaBrokers: envOrDefault("KAFKA_BROKERS", "localhost:9092"),
 		RedisAddr:    envOrDefault("REDIS_ADDR", "localhost:6379"),
-		DatabaseURL:  strings.TrimSpace(os.Getenv("DATABASE_URL")),
+		DatabaseURL:  envOrDefault("DATABASE_URL", "postgres://strim:strim-local-only@localhost:5432/strim?sslmode=disable"),
 	}
 	if strings.TrimSpace(config.KafkaBrokers) == "" {
 		return Config{}, errors.New("KAFKA_BROKERS must not be empty")

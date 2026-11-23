@@ -56,4 +56,14 @@ make detector
 
 The detector reads `transactions.raw`, evaluates NGN/kobo rules, and publishes decisions to `transactions.flagged` or `transactions.cleared`.
 
+## Run the ledger
+
+With Kafka and PostgreSQL running:
+
+```bash
+make ledger
+```
+
+The ledger service consumes cleared transactions from `transactions.cleared`, enforces strict idempotency via `processed_transactions`, acquires deterministic row-level locks on accounts to prevent deadlocks, mutates balances atomically, and writes double-entry records (`DEBIT` and `CREDIT`) to `ledger_entries`.
+
 
