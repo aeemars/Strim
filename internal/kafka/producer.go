@@ -39,10 +39,11 @@ func NewProducer(brokers []string, topic string) (*Producer, error) {
 		WriteBackoffMin: 100 * time.Millisecond,
 		WriteBackoffMax: 5 * time.Second,
 		BatchSize:       100,
-		BatchBytes:      1 << 20,
-		Compression:     segmentio.Snappy,
-		WriteTimeout:    10 * time.Second,
-		ReadTimeout:     10 * time.Second,
+		BatchBytes:             1 << 20,
+		Compression:            segmentio.Snappy,
+		WriteTimeout:           10 * time.Second,
+		ReadTimeout:            10 * time.Second,
+		AllowAutoTopicCreation: true,
 	}
 	return &Producer{Topic: topic, Publisher: writer}, nil
 }

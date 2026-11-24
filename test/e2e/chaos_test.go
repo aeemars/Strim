@@ -38,7 +38,7 @@ func TestChaosConsumerKillAndResume(t *testing.T) {
 	}
 	defer pgPool.Close()
 
-	topic := fmt.Sprintf("chaos-txs-%s", uuid.NewString()[:8])
+	topic := "transactions.cleared"
 	groupID := fmt.Sprintf("chaos-group-%s", uuid.NewString()[:8])
 
 	// 1. Publish 30 transactions to topic

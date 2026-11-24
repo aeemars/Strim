@@ -67,10 +67,10 @@ func TestEndToEndPipeline(t *testing.T) {
 	}
 
 	// 3. Start Detector and Ledger Pipeline in Background
-	rawTopic := fmt.Sprintf("e2e-raw-%s", uuid.NewString()[:8])
-	clearedTopic := fmt.Sprintf("e2e-cleared-%s", uuid.NewString()[:8])
-	flaggedTopic := fmt.Sprintf("e2e-flagged-%s", uuid.NewString()[:8])
-	dlqTopic := fmt.Sprintf("e2e-dlq-%s", uuid.NewString()[:8])
+	rawTopic := "transactions.raw"
+	clearedTopic := "transactions.cleared"
+	flaggedTopic := "transactions.flagged"
+	dlqTopic := "transactions.dlq"
 	_ = dlqTopic
 
 	detectorEngine := &detector.Engine{

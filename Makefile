@@ -1,5 +1,10 @@
 .PHONY: up down logs topics health producer detector ledger test test-e2e
 
+ifneq (,$(wildcard ./.env))
+  include .env
+  export
+endif
+
 up:
 	docker compose up -d
 
